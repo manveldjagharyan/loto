@@ -67,26 +67,32 @@ body{
 
     <script src="./script.js"></script>
     <script>
-        let nextBtn = document.getElementById('nextBtn')
-let number = document.getElementById('number')
-let n = nextBtn.addEventListener('click', onclick)
+        let nextBtn = document.getElementById('nextBtn');
+let number = document.getElementById('number');
+let numbers = [];
 
-let numbers = []
+
 
 function onclick() {
-    let x = Math.round(Math.random() * 100);
-    numbers.push(x)
-    number.textContent = x
+    let x = Math.round(Math.random() * 90);
 
-    for(let i in numbers){
-        if(i === x){
-            return onclick()
+    if (numbers.includes(x)) {
+        for (let i = 0; i < 90; i++) {
+            x = Math.round(Math.random() * 90);
+            if (!numbers.includes(x)) {
+                break;
+            }
         }
     }
 
-
+    numbers.push(x);
+    number.textContent = x;
+    
+    
     console.log(numbers);
-    console.log(x);
+}
+
+nextBtn.addEventListener('click', onclick);
 }
     </script>
 </body>
